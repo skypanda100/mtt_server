@@ -1,0 +1,146 @@
+[
+	{
+		"no": 1,
+		"egName": "reLiang",
+		"chName": "热量(大卡）",
+		"standardValue": 1000
+	},
+	{
+		"no": 2,
+		"egName": "tanShui",
+		"chName": "碳水(克)",
+		"standardValue": 50
+	},
+	{
+		"no": 3,
+		"egName": "zhiFang",
+		"chName": "脂肪(克)",
+		"standardValue": 65
+	},
+	{
+		"no": 4,
+		"egName": "danBaiZhi",
+		"chName": "蛋白质(克)",
+		"standardValue": 60
+	},
+	{
+		"no": 5,
+		"egName": "xianWeiSu",
+		"chName": "纤维素(克)",
+		"standardValue": 25
+	},
+	{
+		"no": 6,
+		"egName": "weiShengSuA",
+		"chName": "维生素A(微克)",
+		"standardValue": 700
+	},
+	{
+		"no": 7,
+		"egName": "weiShengSuC",
+		"chName": "维生素C(毫克)",
+		"standardValue": 100
+	},
+	{
+		"no": 8,
+		"egName": "weiShengSuE",
+		"chName": "维生素E(毫克)",
+		"standardValue": 14
+	},
+	{
+		"no": 9,
+		"egName": "huLuoBoSu",
+		"chName": "胡萝卜素(微克)",
+		"standardValue": 6000
+	},
+	{
+		"no": 10,
+		"egName": "liuAnSu",
+		"chName": "硫胺素(毫克)",
+		"standardValue": 1.2
+	},
+	{
+		"no": 11,
+		"egName": "heHuangSu",
+		"chName": "核黄素(毫克)",
+		"standardValue": 1.2
+	},
+	{
+		"no": 12,
+		"egName": "yanSuan",
+		"chName": "烟酸(毫克)",
+		"standardValue": 12
+	},
+	{
+		"no": 13,
+		"egName": "danGuChun",
+		"chName": "胆固醇(毫克)",
+		"standardValue": 400
+	},
+	{
+		"no": 14,
+		"egName": "mei",
+		"chName": "镁(毫克)",
+		"standardValue": 315
+	},
+	{
+		"no": 15,
+		"egName": "gai",
+		"chName": "钙(毫克)",
+		"standardValue": 800
+	},
+	{
+		"no": 16,
+		"egName": "tie",
+		"chName": "铁(毫克)",
+		"standardValue": 20
+	},
+	{
+		"no": 17,
+		"egName": "xin",
+		"chName": "锌(毫克)",
+		"standardValue": 12
+	},
+	{
+		"no": 18,
+		"egName": "tong",
+		"chName": "铜(毫克)",
+		"standardValue": 2
+	},
+	{
+		"no": 19,
+		"egName": "meng",
+		"chName": "锰(毫克)",
+		"standardValue": 3.5
+	},
+	{
+		"no": 20,
+		"egName": "jia",
+		"chName": "钾(毫克)",
+		"standardValue": 2000
+	},
+	{
+		"no": 21,
+		"egName": "lin",
+		"chName": "磷(毫克)",
+		"standardValue": 600
+	},
+	{
+		"no": 22,
+		"egName": "na",
+		"chName": "钠(毫克)",
+		"standardValue": 1500
+	},
+	{
+		"no": 23,
+		"egName": "xi",
+		"chName": "硒(微克)",
+		"standardValue": 60
+	},
+	{
+		"no": 24,
+		"egName": "NMN",
+		"chName": "NMN(毫克)",
+		"standardValue": 100
+	}
+]
