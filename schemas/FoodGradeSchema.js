@@ -6,6 +6,11 @@ var foodGradeSchema = new Schema({
 	dateTime: String,
 	grade: Number,
 	comment: String,
-	imagePath: String
+	imagePath: String,
+	others: [
+		{
+            imagePath: String
+		}
+	]
 });
 module.exports = foodGradeSchema;
