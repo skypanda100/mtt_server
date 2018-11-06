@@ -19,12 +19,17 @@ const upload = multer({storage}).any();
 router.put('/', upload, function (req, res, next) {
     var data = req.body;
     let files = req.files;
-    data.imagePath = config.storagePath + files[0].filename;
     let others = [];
-    for (let i = 1;i < files.length;i++) {
-        others.push({
-            imagePath: config.storagePath + files[i].filename
-        });
+    for (let i = 0;i < files.length;i++) {
+        let filename = files[i].filename;
+        let suffix = filename.substr(filename.lastIndexOf('-') + 1);
+        if (suffix === '0') {
+            data.imagePath = config.storagePath + filename;
+        } else {
+            others.push({
+                imagePath: config.storagePath + filename
+            });
+        }
     }
     data.others = others;
     var foodGrade = new FoodGrade(
