@@ -4,7 +4,6 @@ var util = require('../libs/util');
 var FoodGrade = require('../models/FoodGrade');
 var multer  = require('multer')
 var config = require('../config/config');
-var mongoose = require('mongoose');
 
 const storage = multer.diskStorage({
     destination (req, res, cb) {
@@ -18,9 +17,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage}).any();
 
 router.put('/', upload, function (req, res, next) {
-    console.log('#########');
-    console.log(req.body);
-
     let data = req.body;
     let files = req.files;
     let others = [];
@@ -34,18 +30,13 @@ router.put('/', upload, function (req, res, next) {
     if (!util.isNull(data.images)) {
         images = JSON.parse(data.images);
     }
+
     for (let i = 0;i < images.length;i++) {
         let filename = images[i];
-        let suffix = filename.substr(filename.lastIndexOf('-') + 1);
-        if (suffix === '0') {
-            data.imagePath = filename;
-        } else {
-            others.push({
-                imagePath: filename
-            });
-        }
+        others.push({
+            imagePath: filename
+        });
     }
-    console.log(images);
 
     for (let i = 0;i < files.length;i++) {
         let filename = files[i].filename;
@@ -63,8 +54,6 @@ router.put('/', upload, function (req, res, next) {
         data
     );
 
-    console.log(foodGrade);
-    console.log('#########');
 
     if (id !== '') {
         FoodGrade.remove({_id: id}, function (err, resp) {
@@ -74,16 +63,18 @@ router.put('/', upload, function (req, res, next) {
                     message: 'server or db error'
                 });
             } else {
-                foodGrade.save((err) => {
-                    if (err) {
-                        next({
-                            status: 500,
-                            message: 'server or db error'
-                        });
-                    } else {
-                        res.json({status: 200, message: 'save status: success'});
-                    }
-                });
+                if (!util.isNull(data.imagePath) && data.imagePath !== '') {
+                    foodGrade.save((err) => {
+                        if (err) {
+                            next({
+                                status: 500,
+                                message: 'server or db error'
+                            });
+                        } else {
+                            res.json({status: 200, message: 'save status: success'});
+                        }
+                    });
+                }
             }
         })
     } else {
