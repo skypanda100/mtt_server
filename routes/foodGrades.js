@@ -74,6 +74,8 @@ router.put('/', upload, function (req, res, next) {
                             res.json({status: 200, message: 'save status: success'});
                         }
                     });
+                } else {
+                    res.json({status: 200, message: 'delete status: success'});
                 }
             }
         })
