@@ -107,4 +107,34 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/last', function (req, res, next) {
+    FoodGrade.find(null, null, {sort: req.query.sort}, (err, docs) => {
+        if (err) {
+            next({
+                status: 500,
+                message: 'server or db error'
+            });
+        } else {
+            let results = [];
+            let lastDate = '';
+            for (let i = 0;i < docs.length;i++) {
+                let doc = docs[i];
+                let date = doc.dateTime.substr(0, 10);
+
+                if (i === 0) {
+                    lastDate = date;
+                    results.push(doc);
+                } else {
+                    if (lastDate === date) {
+                        results.push(doc);
+                    } else {
+                        break;
+                    }
+                }
+            }
+            res.json(results);
+        }
+    });
+});
+
 module.exports = router;
