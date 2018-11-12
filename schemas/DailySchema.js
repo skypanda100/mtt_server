@@ -1,11 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 //创建Schema
-var foodGradeSchema = new Schema({
+var dailySchema = new Schema({
 	user: String,
+	type: String,
 	dateTime: String,
 	grade: Number,
 	comment: String,
+    location: String,
 	imagePath: String,
 	others: [
 		{
@@ -13,4 +15,4 @@ var foodGradeSchema = new Schema({
 		}
 	]
 });
-module.exports = foodGradeSchema;
+module.exports = dailySchema;

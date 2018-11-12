@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var util = require('../libs/util');
-var FoodGrade = require('../models/FoodGrade');
+var Daily = require('../models/Daily');
 var multer  = require('multer')
 var config = require('../config/config');
 
@@ -50,13 +50,13 @@ router.put('/', upload, function (req, res, next) {
         }
     }
     data.others = others;
-    let foodGrade = new FoodGrade(
+    let daily = new Daily(
         data
     );
 
 
     if (id !== '') {
-        FoodGrade.remove({_id: id}, function (err, resp) {
+        Daily.remove({_id: id}, function (err, resp) {
             if (err) {
                 next({
                     status: 500,
@@ -64,7 +64,7 @@ router.put('/', upload, function (req, res, next) {
                 });
             } else {
                 if (!util.isNull(data.imagePath) && data.imagePath !== '') {
-                    foodGrade.save((err) => {
+                    daily.save((err) => {
                         if (err) {
                             next({
                                 status: 500,
@@ -80,7 +80,7 @@ router.put('/', upload, function (req, res, next) {
             }
         })
     } else {
-        foodGrade.save((err) => {
+        daily.save((err) => {
             if (err) {
                 next({
                     status: 500,
@@ -95,7 +95,7 @@ router.put('/', upload, function (req, res, next) {
 
 
 router.get('/', function (req, res, next) {
-    FoodGrade.find(null, null, {sort: req.query.sort}, (err, docs) => {
+    Daily.find(null, null, {sort: req.query.sort}, (err, docs) => {
         if (err) {
             next({
                 status: 500,
@@ -108,7 +108,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/last', function (req, res, next) {
-    FoodGrade.find(null, null, {sort: req.query.sort}, (err, docs) => {
+    Daily.find(null, null, {sort: req.query.sort}, (err, docs) => {
         if (err) {
             next({
                 status: 500,

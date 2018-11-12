@@ -4,13 +4,9 @@ var jwt = require('jsonwebtoken');
 
 var config = require('./config/config');
 var util = require('./libs/util');
-var testdbRouter = require('./routes/testdb');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var foodsRouter = require('./routes/foods');
-var nutritionsRouter = require('./routes/nutritions');
-var ordersRouter = require('./routes/orders');
-var foodGradesRouter = require('./routes/foodGrades');
+var dailiesRouter = require('./routes/dailies');
 var serialsRouter = require('./routes/serials');
 var sleepQualitiesRouter = require('./routes/sleepQualities');
 
@@ -64,13 +60,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use('/static', express.static('public'));
-app.use('/testdb', testdbRouter);
 app.use('/', indexRouter);
-app.use('/foods', foodsRouter);
 app.use('/users', usersRouter);
-app.use('/nutritions', nutritionsRouter);
-app.use('/orders', ordersRouter);
-app.use('/foodGrades', foodGradesRouter);
+app.use('/dailies', dailiesRouter);
 app.use('/serials', serialsRouter);
 app.use('/sleepQualities', sleepQualitiesRouter);
 
