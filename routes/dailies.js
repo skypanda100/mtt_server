@@ -95,7 +95,11 @@ router.put('/', upload, function (req, res, next) {
 
 
 router.get('/', function (req, res, next) {
-    Daily.find(null, null, {sort: req.query.sort}, (err, docs) => {
+    let filter = null;
+    if (!util.isNull(req.query.filter) && req.query.filter !== '') {
+        filter = {type: req.query.filter};
+    }
+    Daily.find(filter, null, {sort: req.query.sort}, (err, docs) => {
         if (err) {
             next({
                 status: 500,
