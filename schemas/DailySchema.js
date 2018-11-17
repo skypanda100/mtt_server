@@ -7,7 +7,7 @@ var dailySchema = new Schema({
 	dateTime: String,
 	grade: Number,
 	comment: String,
-    location: String,
+    address: String,
 	imagePath: String,
 	others: [
 		{
