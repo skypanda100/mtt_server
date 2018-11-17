@@ -96,10 +96,15 @@ router.put('/', upload, function (req, res, next) {
 
 router.get('/', function (req, res, next) {
     let filter = null;
+    let option = {sort: req.query.sort};
     if (!util.isNull(req.query.filter) && req.query.filter !== '') {
         filter = {type: req.query.filter};
     }
-    Daily.find(filter, null, {sort: req.query.sort}, (err, docs) => {
+    if (!util.isNull(req.query.limit) && req.query.limit !== '') {
+        option.limit = parseInt(req.query.limit);
+    }
+    console.log(option);
+    Daily.find(filter, null, option, (err, docs) => {
         if (err) {
             next({
                 status: 500,
