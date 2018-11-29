@@ -13,6 +13,9 @@ var dailySchema = new Schema({
 		{
             imagePath: String
 		}
-	]
+	],
+	tags:[
+	    String
+    ]
 });
 module.exports = dailySchema;

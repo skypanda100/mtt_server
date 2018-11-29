@@ -21,6 +21,7 @@ router.put('/', upload, function (req, res, next) {
     let files = req.files;
     let others = [];
     let images = [];
+    let tags = [];
     let id = null;
 
     if (!util.isNull(data.id)) {
@@ -37,6 +38,14 @@ router.put('/', upload, function (req, res, next) {
             imagePath: filename
         });
     }
+
+    if (!util.isNull(data.tags)) {
+        let tmpTags = JSON.parse(data.tags);
+        for (let tag of tmpTags) {
+            tags.push(tag);
+        }
+    }
+    data.tags = tags;
 
     for (let i = 0;i < files.length;i++) {
         let filename = files[i].filename;
