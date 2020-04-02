@@ -4,6 +4,14 @@ var util = require('../libs/util');
 var Daily = require('../models/Daily');
 var multer  = require('multer')
 var config = require('../config/config');
+var sharp = require('sharp');
+
+async function compress(imagePath){
+    var info = await sharp(imagePath)
+        .resize(500)
+        .toFile(imagePath + '.thumbnail');
+    console.log(info);
+}
 
 const storage = multer.diskStorage({
     destination (req, res, cb) {
@@ -50,11 +58,13 @@ router.put('/', upload, function (req, res, next) {
     for (let i = 0;i < files.length;i++) {
         let filename = files[i].filename;
         let suffix = filename.substr(filename.lastIndexOf('-') + 1);
+        let imagePath = config.storagePath + filename;
+        compress(imagePath);
         if (suffix === '0') {
-            data.imagePath = config.storagePath + filename;
+            data.imagePath = imagePath;
         } else {
             others.push({
-                imagePath: config.storagePath + filename
+                imagePath: imagePath
             });
         }
     }
@@ -62,7 +72,6 @@ router.put('/', upload, function (req, res, next) {
     let daily = new Daily(
         data
     );
-
 
     if (id !== '') {
         Daily.remove({_id: id}, function (err, resp) {
