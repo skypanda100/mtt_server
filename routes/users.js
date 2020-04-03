@@ -22,6 +22,7 @@ router.post('/token', function (req, res, next) {
     let data = req.body;
     let {username, password} = data;
     // console.log(Base64.stringify(SHA256('gaoge100')));
+    // console.log(data);
     User.findOne({
         username: username,
         password: password

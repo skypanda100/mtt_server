@@ -4,13 +4,17 @@ var util = require('../libs/util');
 var Daily = require('../models/Daily');
 var multer  = require('multer')
 var config = require('../config/config');
-var sharp = require('sharp');
+var gm = require('gm');
 
-async function compress(imagePath){
-    var info = await sharp(imagePath)
-        .resize(500)
-        .toFile(imagePath + '.thumbnail');
-    console.log(info);
+function compress(imagePath){
+    var path = config.nginxPath + imagePath;
+    gm(path)
+        .resizeExact(500)
+        .write(path + '.thumbnail', function (err) {
+            if (err) {
+                console.error(err);
+            }
+        });
 }
 
 const storage = multer.diskStorage({
